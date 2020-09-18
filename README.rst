@@ -1,6 +1,11 @@
-# python-koans-solutions
+
+======================
+python-koans-solutions
+======================
+
  My solutions to Python Koans
  Solutions were done using Python 3
+ Original can be found at https://github.com/gregmalcolm/python_koans.
 
 
 ============
