@@ -34,7 +34,45 @@ from runner.koan import *
 
 def score(dice):
     # You need to write this method
-    pass
+
+    # empty array returns 0
+    if not dice:
+        return 0
+
+    # find frequency of each roll
+    freq = {}
+
+    for side in dice:
+        if (side in freq):
+            freq[side] += 1
+        else:
+            freq[side] = 1
+
+    total = 0
+
+    # calculate score for triples
+    for key, value in freq.items():
+        if value >= 3:
+            if key == 1:
+                total += 1000
+            else:
+                total += 100 * key
+
+    # add points for remaining 1s and 5s
+    if 1 in freq:
+        remaining = freq.get(1)
+        if remaining >= 3:
+            remaining -=3
+        total += 100 * remaining
+
+    if 5 in freq:
+        remaining = freq.get(5)
+        if remaining >= 3:
+            remaining -=3
+        total += 50 * remaining
+
+    return total
+
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
